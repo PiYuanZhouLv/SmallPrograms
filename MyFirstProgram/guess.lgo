@@ -1,0 +1,301 @@
+﻿to qd
+cs
+ct
+make no1p1 [无记录]
+make no2p1 [无记录]
+make no3p1 [无记录]
+make no4p1 [无记录]
+make no5p1 [无记录]
+make no6p1 [无记录]
+make no7p1 [无记录]
+make no8p1 [无记录]
+make no9p1 [无记录]
+make no10p1 [无记录]
+make no1p2 [无记录]
+make no2p2 [无记录]
+make no3p2 [无记录]
+make no4p2 [无记录]
+make no5p2 [无记录]
+make no6p2 [无记录]
+make no7p2 [无记录]
+make no8p2 [无记录]
+make no9p2 [无记录]
+make no10p2 [无记录]
+pr "系统已启动
+pr "输入“开始游戏”或“play!”可以开始
+pr "输入“记录？”或“jl？”可查看近10局比分
+pr "输入“滚!”或“gun!”有惊喜！
+wait 500
+ct
+qd1
+end
+to qd1
+make xxxxx read 
+if xxxxx="记录? then jl stop
+if xxxxx="jl? then jl stop
+if xxxxx="gun! then gun stop
+if xxxxx="滚! then gun stop
+if xxxxx="开始游戏 then sz stop
+if xxxxx="play! then sz stop
+qd1
+end
+to sz
+ct
+make dd 0
+make ddd 0
+pr "请输入P1名字
+make bb read
+ct
+pr "请输入P2名字
+make cc read
+ct
+pr "请输入自动存图最低对数（0~6）
+make abcde rc
+ct
+pr "请输入目标分数
+make ddd read
+make ddd ddd-1
+ct
+pr "请输入游戏人数（1或2）
+make zzz rc
+setplaymode zzz
+cj
+end
+to cj 
+make a rc
+if a="v then [make l 0 make ll 0 cs ct pr [ 已重置 ] wait 300 ct qd1 stop]
+make b rc
+make c rc
+make d rc
+make e rc
+setpc 0
+if r=2 then cj1 
+if r=1 then cj2 
+to cj1 
+make g (random 8)+1
+make h (random 8)+1
+make i (random 8)+1
+make j (random 8)+1
+make k (random 8)+1
+make f 0
+cs pu ht ct
+setfont 黑体 50 1
+setxy -200 -100
+tt a
+setxy -100 -100
+tt b
+setxy 0 -100
+tt c
+setxy 100 -100
+tt d
+setxy 200 -100
+tt e
+setfont 黑体 100 5
+setxy -200 100
+tt g
+setxy -100 100
+tt h
+setxy 0 100
+tt i
+setxy 100 100
+tt j
+setxy 200 100
+tt k
+setfont 黑体 50 1
+if a=g then make f f+1 setxy -200 0 setpc 10 tt "对 else setxy -200 0 setpc 12 tt "错
+if b=h then make f f+1 setxy -100 0 setpc 10 tt "对 else setxy -100 0 setpc 12 tt "错
+if c=i then make f f+1 setxy 0 0 setpc 10 tt "对 else setxy 0 0 setpc 12 tt "错
+if d=j then make f f+1 setxy 100 0 setpc 10 tt "对 else setxy 100 0 setpc 12 tt "错
+if e=k then make f f+1 setxy 200 0 setpc 10 tt "对 else setxy 200 0 setpc 12 tt "错
+ct
+if f>=abcde then savepic
+if f=5 then pr "全部正确 
+if f=4 then pr "对了4个
+if f=3 then pr "对了3个
+if f=2 then pr "对了2个
+if f=1 then pr "对了1个
+if f=0 then pr "没有对一个
+make aa REMAINDER q 2
+if aa=0 then make l l+f
+if aa=1 then make ll ll+f
+pr [P1:]
+pr l
+pr [P2:]
+pr ll
+if aa=0 then [pr [P2:]] else [pr [P1:]]
+make q q+1
+make dddd (l>ddd or ll>ddd)
+if dddd=1 then wait 300 win else cj
+end
+to cj2 
+make g (random 8)+1
+make h (random 8)+1
+make i (random 8)+1
+make j (random 8)+1
+make k (random 8)+1
+make f 0
+make z 0
+make s (random 8)+1
+make t (random 8)+1
+make u (random 8)+1
+make v (random 8)+1
+make w (random 8)+1
+cs pu ht ct
+setfont 黑体 50 1
+setxy -200 -100
+tt a
+setxy -100 -100
+tt b
+setxy 0 -100
+tt c
+setxy 100 -100
+tt d
+setxy 200 -100
+tt e
+setfont 黑体 100 5
+setxy -200 100
+tt g
+setxy -100 100
+tt h
+setxy 0 100 
+tt i 
+setxy 100 100 
+tt j 
+setxy 200 100 
+tt k 
+setfont 黑体 50 1
+setxy -200 300 
+tt s 
+setxy -100 300 
+tt t 
+setxy 0 300 
+tt u 
+setxy 100 300 
+tt v 
+setxy 200 300 
+tt w 
+if a=g then make f f+1 setxy -200 0 setpc 10 tt "对 else setxy -200 0 setpc 12 tt "错
+if b=h then make f f+1 setxy -100 0 setpc 10 tt "对 else setxy -100 0 setpc 12 tt "错
+if c=i then make f f+1 setxy 0 0 setpc 10 tt "对 else setxy 0 0 setpc 12 tt "错
+if d=j then make f f+1 setxy 100 0 setpc 10 tt "对 else setxy 100 0 setpc 12 tt "错
+if e=k then make f f+1 setxy 200 0 setpc 10 tt "对 else setxy 200 0 setpc 12 tt "错
+if s=g then make z z+1 setxy -200 200 setpc 10 tt "对 else setxy -200 200 setpc 12 tt "错
+if t=h then make z z+1 setxy -100 200 setpc 10 tt "对 else setxy -100 200 setpc 12 tt "错
+if u=i then make z z+1 setxy 0 200 setpc 10 tt "对 else setxy  0 200 setpc 12 tt "错
+if v=j then make z z+1 setxy 100 200 setpc 10 tt "对 else setxy 100 200 setpc 12 tt "错
+if w=k then make z z+1 setxy 200 200 setpc 10 tt "对 else setxy 200 200 setpc 12 tt "错
+ct
+if f>=abcde then savepic
+if f=5 then pr "全部正确 
+if f=4 then pr "对了4个 
+if f=3 then pr "对了3个 
+if f=2 then pr "对了2个 
+if f=1 then pr "对了1个 
+if f=0 then pr "没有对一个 
+make l l+f 
+make ll ll+z 
+pr [P1:] 
+pr l 
+pr [P2:] 
+pr ll  
+make dddd (l>ddd or ll>ddd)
+if dddd=1 then wait 300 win else cj
+end
+to setplaymode :x 
+setpc 0
+make q 0
+make r :x
+make l 0
+make f 0
+make ll 0
+make z 0
+ct 
+pu
+cs
+ht
+pr "已启动，可开始抽奖
+if r=1 then [pr "单人模式： ]
+if r=2 then [pr "双人模式： ]
+setfont 黑体 100 1
+setxy -500 0 tt bb
+setxy 0 0 tt "VS
+setxy 500 0 tt cc
+setfont 黑体 50 1
+setxy -500 100 tt "P1
+setxy 500 100 tt "P2
+if r=1 then [setxy -500 -100 tt "player setxy 500 -100 tt "computer] 
+else [setxy -500 -100 tt "player setxy 500 -100 tt "player]
+end
+to win 
+setpc 0
+ct
+cs
+setfont 黑体 100 1
+setxy -500 0 tt bb
+setxy 500 0 tt cc
+setxy 0 0 tt ":
+setfont 黑体 50 1
+setxy -500 -100 tt l
+setxy  500 -100 tt ll
+setfont 黑体 75 1
+if l>ll then [make winer 1 setxy -500 100 setpc 10 tt "WIN
+setxy 500 100 setpc 12 tt "FAIL pr "恭喜P1胜利！ ] 
+if l<ll then [make winer 2 setxy -500 100 setpc 12 tt "FAIL setxy 500 100 setpc 10 tt "WIN pr "恭喜P2胜利！ ]
+if l=ll then [make winer 3 setxy -500 100 setpc 14 tt "DRAW setxy 500 100 setpc 14 tt "DRAW pr "平分秋色，下次再战！ ]
+make no10p1 no9p1 make no10p2 no9p2 
+make no9p1 no8p1 make no9p2 no8p2 
+make no8p1 no7p1 make no8p2 no7p2 
+make no7p1 no6p1 make no7p2 no6p2 
+make no6p1 no5p1 make no6p2 no5p2 
+make no5p1 no4p1 make no5p2 no4p2 
+make no4p1 no3p1 make no4p2 no3p2 
+make no3p1 no2p1 make no3p2 no2p2 
+make no2p1 no1p1 make no2p2 no1p2 
+make no1p1 l make no1p2 ll 
+wait 500
+qd1
+end
+to gun
+bye
+end
+to jl
+make szq 1
+jl1
+end
+to jl1
+cs
+ht
+ct
+setfont 黑体 50 1
+setxy -200 100 tt "P1 setxy 200 100 tt "P2
+setfont 黑体 100 1 setpc 0
+if szq>10 then make szq 1
+if szq<1 then make szq 10
+if szq=1 then pu setxy -200 0 tt no1p1 home tt ": setxy 200 0 tt no1p2 pr "第1局  
+if szq=2 then pu setxy -200 0 tt no2p1 home tt ": setxy 200 0 tt no2p2 pr "第2局
+if szq=3 then pu setxy -200 0 tt no3p1 home tt ": setxy 200 0 tt no3p2 pr "第3局
+if szq=4 then pu setxy -200 0 tt no4p1 home tt ": setxy 200 0 tt no4p2 pr "第4局
+if szq=5 then pu setxy -200 0 tt no5p1 home tt ": setxy 200 0 tt no5p2 pr "第5局
+if szq=6 then pu setxy -200 0 tt no6p1 home tt ": setxy 200 0 tt no6p2 pr "第6局
+if szq=7 then pu setxy -200 0 tt no7p1 home tt ": setxy 200 0 tt no7p2 pr "第7局
+if szq=8 then pu setxy -200 0 tt no8p1 home tt ": setxy 200 0 tt no8p2 pr "第8局
+if szq=9 then pu setxy -200 0 tt no9p1 home tt ": setxy 200 0 tt no9p2 pr "第9局
+if szq=10 then pu setxy -200 0 tt no10p1 home tt ": setxy 200 0 tt no10p2 pr "第10局
+make xxxxxxxx rc
+if xxxxxxxx="f then make szq szq-1
+if xxxxxxxx="j then make szq szq+1
+if key=118 then cs jl2 stop
+jl1
+end
+to jl2
+cs
+pr "再次输入“v”退出
+pr "或者输入“n”返回
+make hhhhhhh rc
+if hhhhhhh="v then ct cs qd1 stop
+if hhhhhhh="n then ct cs jl1 stop
+jl2
+end
+
+
+
